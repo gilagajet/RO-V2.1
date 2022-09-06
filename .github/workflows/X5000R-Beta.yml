@@ -16,7 +16,7 @@ on:
     types: started
   push:
     paths:
-      - '.github/workflows/Totolink-X5000R.yml'
+      - '.github/workflows/X5000R-Beta.yml.yml'
       - 'devices/Totolink-X5000R/.config'
 
 env:
