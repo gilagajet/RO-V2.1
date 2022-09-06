@@ -15,15 +15,15 @@ on:
   watch:
     types: started
   push:
-    paths:
-      - '.github/workflows/X5000R-Beta.yml.yml'
-      - 'devices/Totolink-X5000R/.config'
+  #  paths:
+  #    - '.github/workflows/X5000R-Beta.yml.yml'
+  #    - 'devices/Totolink-X5000R/config'
 
 env:
   REPO_URL: https://github.com/solomonricky/openwrt
   REPO_BRANCH: iptables-22.03
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: devices/Totolink-X5000R/.config
+  CONFIG_FILE: devices/Totolink-X5000R/config
   DIY_P1_SH: devices/Totolink-X5000R/diy-part1.sh
   DIY_P2_SH: devices/Totolink-X5000R/diy-part2.sh
   UPLOAD_BIN_DIR: false
@@ -91,7 +91,7 @@ jobs:
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/openvpn.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-lite-slim.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-lite.config >> openwrt/.config
-        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-xray.config >> openwrt/.config
+        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-xray.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall2.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-lite.config >> openwrt/.config
