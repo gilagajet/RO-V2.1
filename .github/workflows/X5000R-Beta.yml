@@ -24,7 +24,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/Totolink-X5000R/config
   DIY_P1_SH: devices/Totolink-X5000R/diy-part1.sh
-  DIY_P2_SH: devices/Totolink-X5000R/diy-part2.sh
+  DIY_P2_SH: devices/Totolink-X5000R/diy-part2.1.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: false
@@ -109,6 +109,9 @@ jobs:
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/wireguard.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/xray.config >> openwrt/.config
         curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/zram.config >> openwrt/.config
+
+        sed -i 's/CONFIG_KERNEL_BUILD_USER=""/CONFIG_KERNEL_BUILD_USER="gilagajet"/g' openwrt/.config
+        sed -i 's/CONFIG_KERNEL_BUILD_DOMAIN=""/CONFIG_KERNEL_BUILD_DOMAIN="modem.my"/g' openwrt/.config
         
     - name: Download package
       id: package
