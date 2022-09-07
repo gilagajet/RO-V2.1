@@ -12,8 +12,8 @@ name: X5000R-Beta
 
 on:
   workflow_dispatch:
-  watch:
-    types: started
+  #watch:
+  #  types: started
   push:
   #  paths:
   #    - '.github/workflows/X5000R-Beta.yml.yml'
@@ -25,7 +25,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/Totolink-X5000R/config
   DIY_P1_SH: devices/Totolink-X5000R/diy-part1.sh
-  DIY_P2_SH: devices/Totolink-X5000R/diy-part2.sh
+  DIY_P2_SH: devices/Totolink-X5000R/diy-part2.1.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: false
