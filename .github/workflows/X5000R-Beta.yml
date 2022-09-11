@@ -19,8 +19,8 @@ on:
       - 'devices/Totolink-X5000R/config'
 
 env:
-  REPO_URL: https://github.com/solomonricky/openwrt
-  REPO_BRANCH: iptables-22.03
+  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_BRANCH: openwrt-22.03.0
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/Totolink-X5000R/config
   DIY_P1_SH: devices/Totolink-X5000R/diy-part1.sh
