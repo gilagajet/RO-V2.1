@@ -16,13 +16,13 @@ on:
   push:
     paths:
       - '.github/workflows/X5000R-Beta.yml'
-      - 'devices/Totolink-X5000R/config.v22'
+      - 'devices/Totolink-X5000R/config'
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: v22.03.0
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: devices/Totolink-X5000R/config.v22
+  CONFIG_FILE: devices/Totolink-X5000R/config
   DIY_P1_SH: devices/Totolink-X5000R/diy-part1.sh
   DIY_P2_SH: devices/Totolink-X5000R/diy-part2.1.sh
   UPLOAD_BIN_DIR: false
