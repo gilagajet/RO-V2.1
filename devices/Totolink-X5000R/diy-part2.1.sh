@@ -24,9 +24,9 @@ echo -e "          Built on "$(date +%Y.%m.%d)"\n ------------------------------
 
 # Version Update
 sed -i '/DISTRIB_DESCRIPTION/d' package/base-files/files/etc/openwrt_release
-echo "DISTRIB_DESCRIPTION='GilaGajet build $(TZ=UTC+8 date "+%Y.%m.%d") @ OpenWrt'" >> package/base-files/files/etc/openwrt_release
+echo "DISTRIB_DESCRIPTION='GilaGajet build $(TZ=UTC+8 date "+%Y.%m") @ OpenWrt'" >> package/base-files/files/etc/openwrt_release
 sed -i '/DISTRIB_REVISION/d' package/base-files/files/etc/openwrt_release
-echo "DISTRIB_REVISION='[V22]'" >> package/base-files/files/etc/openwrt_release
+echo "DISTRIB_REVISION='[Beta]'" >> package/base-files/files/etc/openwrt_release
 
 # Update TimeZone
 sed -i 's/0.openwrt.pool.ntp.org/time.google.com/g' package/base-files/files/bin/config_generate
