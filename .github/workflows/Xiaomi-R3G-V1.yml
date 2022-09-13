@@ -84,11 +84,9 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/usb.config >> openwrt/.config
-        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/bypass.config >> openwrt/.config
-        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/vssr.config >> openwrt/.config
-        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/extra.config >> openwrt/.config
-        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/htop.config >> openwrt/.config
+        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/bypass.config >> openwrt/.config
+        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/extra.config >> openwrt/.config
+        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/htop.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ipv6.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/l2tp.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/language.config >> openwrt/.config
@@ -98,19 +96,19 @@ jobs:
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/openvpn-mbedtls.config >> openwrt/.config
         curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/openvpn-wolfssl.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/openvpn.config >> openwrt/.config
-        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-lite-slim.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-lite.config >> openwrt/.config
-        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-xray.config >> openwrt/.config
-        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall.config >> openwrt/.config
+        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-xray.config >> openwrt/.config
+        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall2.config >> openwrt/.config
-        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-lite.config >> openwrt/.config
+        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-lite.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-plus-ulti.config >> openwrt/.config
-        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-plus.config >> openwrt/.config
+        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-plus.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/stunnel.config >> openwrt/.config
-        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/themes.config >> openwrt/.config
+        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/usb.config >> openwrt/.config
+        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/vssr.config >> openwrt/.config
         curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/wireguard.config >> openwrt/.config
+        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/xray.config >> openwrt/.config
         curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/zram.config >> openwrt/.config
-
         
     - name: Download package
       id: package
@@ -162,8 +160,11 @@ jobs:
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf packages
-        zip -r ${{ env.DEVICE_SAVE_NAME }}.zip ./*
-        ls -Ahl
+        rm -rf *.buildinfo
+        rm -rf *.manifest
+        rm -rf *.json
+        #zip -r ${{ env.DEVICE_SAVE_NAME }}.zip ./*
+        #ls -Ahl
         #mkdir zip && mv ${{ env.DEVICE_SAVE_NAME }}.zip zip
         #cp -r *squashfs-sysupgrade.bin ./zip/
         #cd zip && ls -Ahl
@@ -179,7 +180,8 @@ jobs:
         
     - name: Generate release tag
       id: tag
-      if: steps.organize.outputs.status == 'success' && !cancelled()
+      #if: steps.organize.outputs.status == 'success' && !cancelled()
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
         echo "::set-output name=release_tag::$(date +"%Y.%m.%d")"
         touch release.txt
