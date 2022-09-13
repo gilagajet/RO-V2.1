@@ -19,8 +19,8 @@ on:
       - 'devices/Xiaomi-CR6608/config'
 
 env:
-  REPO_URL: https://github.com/solomonricky/openwrt
-  REPO_BRANCH: iptables-22.03
+  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_BRANCH: v22.03.0
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/Xiaomi-CR6608/config
   DIY_P1_SH: devices/Xiaomi-CR6608/diy-part1.sh
@@ -161,8 +161,8 @@ jobs:
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf packages
-        #zip -r ${{ env.DEVICE_SAVE_NAME }}.zip ./*
-        #ls -Ahl
+        zip -r ${{ env.DEVICE_SAVE_NAME }}.zip ./*
+        ls -Ahl
         #mkdir zip && mv ${{ env.DEVICE_SAVE_NAME }}.zip zip
         #cp -r *squashfs-sysupgrade.bin ./zip/
         #cd zip && ls -Ahl
