@@ -61,11 +61,11 @@ fi
 
 # Tweak1
 chmod 755 /etc/crontabs/root
-echo '#Clear pagecache' | tee -a /etc/crontabs/root
+echo '#Clear PageCache' | tee -a /etc/crontabs/root
 echo '0 */3 * * * sync; echo 1 > /proc/sys/vm/drop_caches' | tee -a /etc/crontabs/root
 echo | tee -a /etc/crontabs/root
-echo '#PingLoop' | tee -a /etc/crontabs/root
-echo '* * * * * ping 9.9.9.9' | tee -a /etc/crontabs/root
+echo '#Ping Loop' | tee -a /etc/crontabs/root
+echo '* * * * * ping 8.8.8.8' | tee -a /etc/crontabs/root
 echo | tee -a /etc/crontabs/root
 echo '#Stop Flooding Ping' | tee -a /etc/crontabs/root
 echo "* * * * * pgrep ping | awk 'NR >= 3' | xargs -n1 kill" | tee -a /etc/crontabs/root
