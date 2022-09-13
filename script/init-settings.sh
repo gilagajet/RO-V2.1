@@ -65,14 +65,14 @@ chmod 755 /etc/crontabs/root
 echo '#Clear PageCache' | tee -a /etc/crontabs/root
 echo '0 */3 * * * sync; echo 1 > /proc/sys/vm/drop_caches' | tee -a /etc/crontabs/root
 echo | tee -a /etc/crontabs/root
-echo '#Ping Loop' | tee -a /etc/crontabs/root
-echo '* * * * * ping 8.8.8.8' | tee -a /etc/crontabs/root
-echo | tee -a /etc/crontabs/root
-echo '#Stop Flooding Ping' | tee -a /etc/crontabs/root
-echo "* * * * * pgrep ping | awk 'NR >= 3' | xargs -n1 kill" | tee -a /etc/crontabs/root
-echo | tee -a /etc/crontabs/root
-echo '#Clear Log' | tee -a /etc/crontabs/root
-echo "*/59 * * * * /etc/init.d/log restart >/dev/null 2>&1" | tee -a /etc/crontabs/root
+#echo '#Ping Loop' | tee -a /etc/crontabs/root
+#echo '* * * * * ping 8.8.8.8' | tee -a /etc/crontabs/root
+#echo | tee -a /etc/crontabs/root
+#echo '#Stop Flooding Ping' | tee -a /etc/crontabs/root
+#echo "* * * * * pgrep ping | awk 'NR >= 3' | xargs -n1 kill" | tee -a /etc/crontabs/root
+#echo | tee -a /etc/crontabs/root
+#echo '#Clear Log' | tee -a /etc/crontabs/root
+#echo "*/59 * * * * /etc/init.d/log restart >/dev/null 2>&1" | tee -a /etc/crontabs/root
 
 # Tweak2
 echo | tee -a /etc/sysctl.conf
