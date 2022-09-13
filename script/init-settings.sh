@@ -42,6 +42,7 @@ chmod +x /bin/myip
 #iptables -t mangle -A POSTROUTING -j TTL --ttl-set 65
 #EOF
 #/etc/config/firewall restart
+echo 'TTL' | tee -a /etc/crontabs/root
 echo "net.ipv4.ip_default_ttl=65" >> /etc/sysctl.conf 
 echo "net.ipv6.ip_default_ttl=65" >> /etc/sysctl.conf 
 
