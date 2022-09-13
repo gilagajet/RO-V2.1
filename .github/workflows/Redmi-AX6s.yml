@@ -17,13 +17,13 @@ on:
   push:
     paths:
       - '.github/workflows/Redmi-AX6s.yml'
-      - 'devices/Redmi-AX6s/.config'
+      - 'devices/Redmi-AX6s/config'
 
 env:
   REPO_URL: https://github.com/solomonricky/openwrt
   REPO_BRANCH: iptables-22.03
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: devices/Redmi-AX6s/.config
+  CONFIG_FILE: devices/Redmi-AX6s/config
   DIY_P1_SH: devices/Redmi-AX6s/diy-part1.sh
   DIY_P2_SH: devices/Redmi-AX6s/diy-part2.sh
   UPLOAD_BIN_DIR: false
