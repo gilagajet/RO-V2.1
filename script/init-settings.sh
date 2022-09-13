@@ -3,7 +3,7 @@
 # File name: init-settings.sh
 # Description: This script will be executed during the first boot
 # Author: gilagajet
-# Blog: https://mlapp.cn
+# Contact: t.me/gilagajet
 #=================================================
 
 # Disable autostart by default for some packages
@@ -21,9 +21,6 @@ sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
 
 #-----------------------------------------------------------------------------
 
-# Set Argon theme to light on first boot
-uci set argon.@global[0].mode='light'
-
 # Set hostname to OpenWRT
 uci set system.@system[0].hostname='OpenWRT'
 
@@ -37,30 +34,6 @@ uci commit system
 # Add IP Address Info Checker
 # run "myip" using terminal for use
 chmod +x /bin/myip
-
-#-----------------------------------------------------------------------------
-
-# Set default theme to luci-theme-argon
-# Delete default watchcat setting
-# Set Google DNS as default DNS Forwarding
-cat << 'EOF' > /bin/default-theme
-
-uci set luci.main.mediaurlbase='/luci-static/argon'
-uci commit luci
-
-#uci delete system.@watchcat
-#uci commit
-#/etc/init.d/watchcat restart
-
-#uci add_list dhcp.@dnsmasq[0].server='8.8.8.8'
-#uci add_list dhcp.@dnsmasq[0].server='9.9.9.9'
-#uci add_list dhcp.@dnsmasq[0].server='1.1.1.1'
-#uci commit dhcp
-#/etc/init.d/dnsmasq restart
-
-EOF
-chmod +x /bin/default-theme
-default-theme
 
 #-----------------------------------------------------------------------------
 
@@ -94,6 +67,27 @@ echo '#PingLoop' | tee -a /etc/crontabs/root
 echo '* * * * * ping 9.9.9.9' | tee -a /etc/crontabs/root
 echo '#Stop Flooding Ping' | tee -a /etc/crontabs/root
 echo "* * * * * pgrep ping | awk 'NR >= 3' | xargs -n1 kill" | tee -a /etc/crontabs/root
+
+# Tweak2
+echo '# increase Linux autotuning TCP buffer limit to 32MB' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.tcp_rmem=4096 87380 33554432' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.tcp_wmem=4096 65536 33554432' | tee -a /etc/sysctl.conf
+echo '# recommended default congestion control is htcp' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.tcp_congestion_control=bbr' | tee -a /etc/sysctl.conf
+echo '# recommended for hosts with jumbo frames enabled' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.tcp_mtu_probing=1' | tee -a /etc/sysctl.conf
+echo '#Others' | tee -a /etc/sysctl.conf
+echo 'fs.file-max=1000000' | tee -a /etc/sysctl.conf
+echo 'fs.inotify.max_user_instances=8192' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.tcp_tw_reuse=1' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.ip_local_port_range=1024 65000' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.tcp_max_syn_backlog=1024' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.tcp_fin_timeout=15' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.tcp_keepalive_intvl=30' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.tcp_keepalive_probes=5' | tee -a /etc/sysctl.conf
+echo 'net.netfilter.nf_conntrack_tcp_timeout_time_wait=30' | tee -a /etc/sysctl.conf
+echo 'net.netfilter.nf_conntrack_tcp_timeout_fin_wait=30' | tee -a /etc/sysctl.conf
+echo 'net.ipv4.tcp_synack_retries=3' | tee -a /etc/sysctl.conf
 
 
 exit 0
