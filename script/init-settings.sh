@@ -37,13 +37,13 @@ chmod +x /bin/myip
 
 #-----------------------------------------------------------------------------
 
-# Set Custom TTL
-cat << 'EOF' >> /etc/firewall.user
-
-iptables -t mangle -A POSTROUTING -j TTL --ttl-set 65
-
-EOF
-/etc/config/firewall restart
+# Set Custom TTL (cat /proc/sys/net/ipv4/ip_default_ttl)
+#cat << 'EOF' >> /etc/firewall.user
+#iptables -t mangle -A POSTROUTING -j TTL --ttl-set 65
+#EOF
+#/etc/config/firewall restart
+echo "net.ipv4.ip_default_ttl=65" >> /etc/sysctl.conf 
+echo "net.ipv6.ip_default_ttl=65" >> /etc/sysctl.conf 
 
 #-----------------------------------------------------------------------------
 
@@ -63,24 +63,28 @@ fi
 chmod 755 /etc/crontabs/root
 echo '#Clear pagecache' | tee -a /etc/crontabs/root
 echo '0 */3 * * * sync; echo 1 > /proc/sys/vm/drop_caches' | tee -a /etc/crontabs/root
-echo
+echo | tee -a /etc/crontabs/root
 echo '#PingLoop' | tee -a /etc/crontabs/root
 echo '* * * * * ping 9.9.9.9' | tee -a /etc/crontabs/root
-echo
+echo | tee -a /etc/crontabs/root
 echo '#Stop Flooding Ping' | tee -a /etc/crontabs/root
 echo "* * * * * pgrep ping | awk 'NR >= 3' | xargs -n1 kill" | tee -a /etc/crontabs/root
-echo
+echo | tee -a /etc/crontabs/root
 echo '#Clear Log' | tee -a /etc/crontabs/root
 echo "*/59 * * * * /etc/init.d/log restart >/dev/null 2>&1" | tee -a /etc/crontabs/root
 
 # Tweak2
+echo | tee -a /etc/sysctl.conf
 echo '# increase Linux autotuning TCP buffer limit to 32MB' | tee -a /etc/sysctl.conf
 echo 'net.ipv4.tcp_rmem=4096 87380 33554432' | tee -a /etc/sysctl.conf
 echo 'net.ipv4.tcp_wmem=4096 65536 33554432' | tee -a /etc/sysctl.conf
+echo | tee -a /etc/sysctl.conf
 echo '# recommended default congestion control is htcp' | tee -a /etc/sysctl.conf
 echo 'net.ipv4.tcp_congestion_control=bbr' | tee -a /etc/sysctl.conf
+echo | tee -a /etc/sysctl.conf
 echo '# recommended for hosts with jumbo frames enabled' | tee -a /etc/sysctl.conf
 echo 'net.ipv4.tcp_mtu_probing=1' | tee -a /etc/sysctl.conf
+echo | tee -a /etc/sysctl.conf
 echo '#Others' | tee -a /etc/sysctl.conf
 echo 'fs.file-max=1000000' | tee -a /etc/sysctl.conf
 echo 'fs.inotify.max_user_instances=8192' | tee -a /etc/sysctl.conf
