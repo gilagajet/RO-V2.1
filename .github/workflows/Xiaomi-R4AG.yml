@@ -108,7 +108,7 @@ jobs:
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/vssr.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/wireguard.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/xray.config >> openwrt/.config
-        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/zram.config >> openwrt/.config
+        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/zram.config >> openwrt/.config
         
     - name: Download package
       id: package
