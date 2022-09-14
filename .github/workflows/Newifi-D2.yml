@@ -104,7 +104,7 @@ jobs:
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-plus-ulti.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-plus.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/stunnel.config >> openwrt/.config
-        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/usb.config >> openwrt/.config
+        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/usb.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/vssr.config >> openwrt/.config
         curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/wireguard.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/xray.config >> openwrt/.config
