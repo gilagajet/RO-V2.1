@@ -16,13 +16,13 @@ on:
   push:
     paths:
       - '.github/workflows/Xiaomi-CR6608.yml'
-      - 'devices/Xiaomi-CR6608/config'
+      - 'devices/Xiaomi-CR6608/config.v22'
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: v22.03.0
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: devices/Xiaomi-CR6608/config
+  CONFIG_FILE: devices/Xiaomi-CR6608/config.v22
   DIY_P1_SH: devices/Xiaomi-CR6608/diy-part1.sh
   DIY_P2_SH: devices/Xiaomi-CR6608/diy-part2.sh
   UPLOAD_BIN_DIR: false
