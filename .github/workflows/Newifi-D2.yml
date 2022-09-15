@@ -20,7 +20,7 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: v22.03.0
+  REPO_BRANCH: openwrt-22.03
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/Newifi-D2/config
   DIY_P1_SH: devices/Newifi-D2/diy-part1.sh
@@ -160,7 +160,7 @@ jobs:
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf packages
-        rm -rf *.buildinfo
+        #rm -rf *.buildinfo
         rm -rf *.manifest
         rm -rf *.json
         #zip -r ${{ env.DEVICE_SAVE_NAME }}.zip ./*
