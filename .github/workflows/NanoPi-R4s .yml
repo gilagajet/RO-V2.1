@@ -8,7 +8,7 @@
 #                                                                     #
 # =================================================================== #
 
-name: NanoPi-R4s
+name: NanoPi-R2s
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ on:
   push:
     paths:
       - '.github/workflows/NanoPi-R4s.yml'
-      - 'devices/NanoPi-R4s/config.v22'
+      - 'devices/NanoPi-R2s/config.v22'
 
 env:
   REPO_URL: https://github.com/solomonricky/openwrt
@@ -98,7 +98,7 @@ jobs:
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/openvpn-wolfssl.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/openvpn.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-lite.config >> openwrt/.config
-        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-xray.config >> openwrt/.config
+        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-xray.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall2.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-lite.config >> openwrt/.config
@@ -109,7 +109,7 @@ jobs:
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/vssr.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/wireguard.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/xray.config >> openwrt/.config
-        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/zram.config >> openwrt/.config
+        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/zram.config >> openwrt/.config
         
     - name: Download package
       id: package
@@ -126,7 +126,7 @@ jobs:
       run: |
         cd openwrt
         mkdir -p files/etc/uci-defaults/
-        cp $GITHUB_WORKSPACE/script/init-settings-64.sh files/etc/uci-defaults/99-init-settings
+        cp $GITHUB_WORKSPACE/script/init-settings.sh files/etc/uci-defaults/99-init-settings
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "::set-output name=status::success"
@@ -207,4 +207,3 @@ jobs:
     - name: Telegram push notification
       if: steps.organize.outputs.status == 'success' && !cancelled()
       run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=Congratulations! Firmware ${{ env.DEVICE_SAVE_NAME }} successfully uploaded."
-      
