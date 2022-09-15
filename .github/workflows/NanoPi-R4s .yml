@@ -20,8 +20,8 @@ on:
       - 'devices/NanoPi-R4s/config.v22'
 
 env:
-  REPO_URL: https://github.com/solomonricky/openwrt
-  REPO_BRANCH: iptables-22.03
+  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_BRANCH: openwrt-22.03
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/NanoPi-R4s/config.v22
   DIY_P1_SH: devices/NanoPi-R4s/diy-part1.sh
