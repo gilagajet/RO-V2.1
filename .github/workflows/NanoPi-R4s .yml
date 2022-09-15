@@ -8,7 +8,7 @@
 #                                                                     #
 # =================================================================== #
 
-name: NanoPi-R2s
+name: NanoPi-R4s
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ on:
   push:
     paths:
       - '.github/workflows/NanoPi-R4s.yml'
-      - 'devices/NanoPi-R2s/config.v22'
+      - 'devices/NanoPi-R4s/config.v22'
 
 env:
   REPO_URL: https://github.com/solomonricky/openwrt
