@@ -19,9 +19,9 @@ on:
       - 'devices/Totolink-X5000R/config.v22'
 
 env:
-  REPO_URL: https://github.com/solomonricky/openwrt
-  REPO_BRANCH: iptables-22.03
-  FEEDS_CONF: feeds.conf.defaul
+  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_BRANCH: v22.03.0
+  FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/Totolink-X5000R/config.v22
   DIY_P1_SH: devices/Totolink-X5000R/diy-part1.sh
   DIY_P2_SH: devices/Totolink-X5000R/diy-part2.sh
@@ -97,7 +97,7 @@ jobs:
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/openvpn-wolfssl.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/openvpn.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-lite.config >> openwrt/.config
-        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-xray.config >> openwrt/.config
+        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-xray.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall2.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-lite.config >> openwrt/.config
