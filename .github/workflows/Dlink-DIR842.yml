@@ -20,8 +20,8 @@ on:
       - 'devices/Dlink-DIR842/config'
 
 env:
-  REPO_URL: https://github.com/solomonricky/openwrt
-  REPO_BRANCH: iptables-22.03
+  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_BRANCH: openwrt-22.03
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/Dlink-DIR842/config
   DIY_P1_SH: devices/Dlink-DIR842/diy-part1.sh
