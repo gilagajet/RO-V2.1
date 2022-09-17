@@ -98,7 +98,7 @@ jobs:
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/openvpn-wolfssl.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/openvpn.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-lite.config >> openwrt/.config
-        curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-xray.config >> openwrt/.config
+        #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall-xray.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/passwall2.config >> openwrt/.config
         #curl https://raw.githubusercontent.com/gilagajet/plugin/master/config/ssr-lite.config >> openwrt/.config
@@ -161,7 +161,7 @@ jobs:
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf packages
-        rm -rf *.buildinfo
+        #rm -rf *.buildinfo
         rm -rf *.manifest
         rm -rf *.json
         #zip -r ${{ env.DEVICE_SAVE_NAME }}.zip ./*
