@@ -18,7 +18,7 @@ sed -i 's/wireless.radio${devidx}.disabled=1/wireless.radio${devidx}.disabled=0/
 
 # Version Update
 sed -i '/DISTRIB_DESCRIPTION/d' package/base-files/files/etc/openwrt_release
-echo "DISTRIB_DESCRIPTION='GilaGajet build $(TZ=UTC+8 date "+%Y.%m") '" >> package/base-files/files/etc/openwrt_release
+echo "DISTRIB_DESCRIPTION='GilaGajet build $(TZ=UTC+8 date "+%Y.%m") @ OpenWrt'" >> package/base-files/files/etc/openwrt_release
 sed -i '/DISTRIB_REVISION/d' package/base-files/files/etc/openwrt_release
 echo "DISTRIB_REVISION='[WSS]'" >> package/base-files/files/etc/openwrt_release
 
