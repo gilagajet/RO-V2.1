@@ -45,7 +45,7 @@ chmod +x /bin/myip
 echo | tee -a /etc/sysctl.conf
 echo '# TTL' | tee -a /etc/sysctl.conf
 echo "net.ipv4.ip_default_ttl=65" >> /etc/sysctl.conf 
-echo "net.ipv6.ip_default_ttl=65" >> /etc/sysctl.conf 
+#echo "net.ipv6.ip_default_ttl=65" >> /etc/sysctl.conf 
 
 #-----------------------------------------------------------------------------
 
