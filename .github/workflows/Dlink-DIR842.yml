@@ -21,7 +21,7 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: openwrt-22.03
+  REPO_BRANCH: v22.03.0
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/Dlink-DIR842/config.v22
   DIY_P1_SH: devices/Dlink-DIR842/diy-part1.sh
