@@ -194,5 +194,26 @@ sleep 1
 uci commit system
 /etc/init.d/system reload
 
+#-----------------------------------------------------------------------------
+
+# Disable ipv6
+uci set 'network.lan.ipv6=0'
+uci set 'network.wan.ipv6=0'
+uci set 'dhcp.lan.dhcpv6=disabled'
+
+/etc/init.d/odhcpd stop
+/etc/init.d/odhcpd disable
+
+uci set network.lan.delegate="0"
+
+uci -q delete network.globals.ula_prefix
+
+uci -q delete dhcp.lan.dhcpv6
+uci -q delete dhcp.lan.ra
+
+uci delete network.wan6
+
+uci commit
+/etc/init.d/network restart
 
 exit 0
