@@ -20,7 +20,7 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: v22.03.0
+  REPO_BRANCH: v22.03.2
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/Newifi-D2/config.v22
   DIY_P1_SH: devices/Newifi-D2/diy-part1.sh
