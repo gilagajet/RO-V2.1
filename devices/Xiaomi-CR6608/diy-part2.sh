@@ -20,7 +20,7 @@ sed -i 's/wireless.radio${devidx}.disabled=1/wireless.radio${devidx}.disabled=0/
 sed -i '/DISTRIB_DESCRIPTION/d' package/base-files/files/etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='GilaGajet build $(TZ=UTC+8 date "+%Y.%m") '" >> package/base-files/files/etc/openwrt_release
 sed -i '/DISTRIB_REVISION/d' package/base-files/files/etc/openwrt_release
-echo "DISTRIB_REVISION='[WSS-CF]'" >> package/base-files/files/etc/openwrt_release
+echo "DISTRIB_REVISION='[WSS]'" >> package/base-files/files/etc/openwrt_release
 
 # Update TimeZone
 sed -i 's/0.openwrt.pool.ntp.org/time.google.com/g' package/base-files/files/bin/config_generate
